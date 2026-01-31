@@ -1,0 +1,21 @@
+{
+    "usuarios": [
+        {
+            "id" : 1,
+            "nome" : "Sergio Mendes",
+            "email" : "sergio.coti@gmail.com",
+            "senha" : "@Admin123"
+        }
+    ],
+    "servicos": [
+        {
+            "id" : 1,
+            "nome" : "Manutenção de Computador",
+            "data" : "2026-01-26",
+            "tipo" : "Técnico de Informática",
+            "preco" : 150.00,
+            "finalizado" : false,
+            "usuarioId" : 1
+        }
+    ]
+}
