@@ -1,0 +1,83 @@
+<app-navbar />
+
+<div class="container mt-3">
+    <h3>Consulta de tarefas</h3>
+    <p>Gerencie as tarefas da sua agenda</p>
+
+    @if(tarefas().length > 0) {
+
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Início</th>
+                <th>Fim</th>
+                <th>Nome da tarefa</th>
+                <th>Prioridade</th>
+                <th>Finalizado</th>
+                <th width="140">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(tarefa of tarefas() | paginate: { itemsPerPage: 5, currentPage: pagina }; track tarefa.id) {
+            <tr>
+                <td>{{tarefa.data}}</td>
+                <td>{{tarefa.hora_inicio}}</td>
+                <td>{{tarefa.hora_fim}}</td>
+                <td>{{tarefa.nome}}</td>
+                <td>
+                    @switch (tarefa.prioridade) {
+                    @case ('Alta') {
+                    <span class="badge bg-danger">ALTA</span>
+                    }
+                    @case ('Média') {
+                    <span class="badge bg-warning">MÉDIA</span>
+                    }
+                    @case ('Baixa') {
+                    <span class="badge bg-success">BAIXA</span>
+                    }
+                    }
+                </td>
+                <td>
+                    @if(tarefa.finalizado) {
+                        <span class="badge bg-primary">SIM</span>
+                    }
+                    @else {
+                        <span class="badge bg-secondary">NÃO</span>
+                    }
+                </td>
+                <td>
+                    <button class="btn btn-sm btn-outline-primary me-2"
+                        [routerLink]="['/tarefas/editar-tarefas', tarefa.id]">
+                        Editar
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger" (click)="onDelete(tarefa.id)">
+                        Excluir
+                    </button>
+                </td>
+            </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="7">
+                    Quantidade de tarefas: {{tarefas().length}}
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <div class="text-center">
+        <pagination-controls
+            previousLabel="Página anterior"
+            nextLabel="Próxima página"
+            (pageChange)="pageChange($event)"
+        />
+    </div>
+
+    } @else {
+    <div class="alert alert-warning">
+        Nenhuma tarefa foi encontrada em sua agenda.
+    </div>
+    }
+</div>
