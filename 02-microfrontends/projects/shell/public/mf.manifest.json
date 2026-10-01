@@ -1,0 +1,4 @@
+{
+    "app-produtos" : "http://localhost:4201/remoteEntry.js",
+    "app-pedidos" : "http://localhost:4202/remoteEntry.js"
+}

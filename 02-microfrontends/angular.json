@@ -1,0 +1,277 @@
+{
+	"$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+	"version": 1,
+	"newProjectRoot": "projects",
+	"projects": {
+		"shell": {
+			"projectType": "application",
+			"schematics": {},
+			"root": "projects/shell",
+			"sourceRoot": "projects/shell/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "ngx-build-plus:browser",
+					"options": {
+						"tsConfig": "projects/shell/tsconfig.app.json",
+						"outputPath": "dist/shell",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/shell/public",
+								"output": "."
+							}
+						],
+						"styles": [
+							"projects/shell/src/styles.css"
+						],
+						"main": "projects/shell/src/main.ts",
+						"index": "projects/shell/src/index.html",
+						"extraWebpackConfig": "projects/shell/webpack.config.js",
+						"commonChunk": false
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kB",
+									"maximumError": "1MB"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "4kB",
+									"maximumError": "8kB"
+								}
+							],
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/shell/webpack.prod.config.js"
+						},
+						"development": {
+							"optimization": false,
+							"extractLicenses": false,
+							"sourceMap": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "ngx-build-plus:dev-server",
+					"configurations": {
+						"production": {
+							"buildTarget": "shell:build:production",
+							"extraWebpackConfig": "projects/shell/webpack.prod.config.js"
+						},
+						"development": {
+							"buildTarget": "shell:build:development"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4200,
+						"publicHost": "http://localhost:4200",
+						"extraWebpackConfig": "projects/shell/webpack.config.js"
+					}
+				},
+				"extract-i18n": {
+					"builder": "@angular/build:extract-i18n"
+				},
+				"test": {
+					"builder": "@angular/build:karma",
+					"options": {
+						"tsConfig": "projects/shell/tsconfig.spec.json",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/shell/public"
+							}
+						],
+						"styles": [
+							"projects/shell/src/styles.css"
+						]
+					}
+				}
+			}
+		},
+		"app-produtos": {
+			"projectType": "application",
+			"schematics": {},
+			"root": "projects/app-produtos",
+			"sourceRoot": "projects/app-produtos/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "ngx-build-plus:browser",
+					"options": {
+						"tsConfig": "projects/app-produtos/tsconfig.app.json",
+						"outputPath": "dist/app-produtos",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/app-produtos/public",
+								"output": "."
+							}
+						],
+						"styles": [
+							"projects/app-produtos/src/styles.css"
+						],
+						"main": "projects/app-produtos/src/main.ts",
+						"index": "projects/app-produtos/src/index.html",
+						"extraWebpackConfig": "projects/app-produtos/webpack.config.js",
+						"commonChunk": false
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kB",
+									"maximumError": "1MB"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "4kB",
+									"maximumError": "8kB"
+								}
+							],
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/app-produtos/webpack.prod.config.js"
+						},
+						"development": {
+							"optimization": false,
+							"extractLicenses": false,
+							"sourceMap": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "ngx-build-plus:dev-server",
+					"configurations": {
+						"production": {
+							"buildTarget": "app-produtos:build:production",
+							"extraWebpackConfig": "projects/app-produtos/webpack.prod.config.js"
+						},
+						"development": {
+							"buildTarget": "app-produtos:build:development"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4201,
+						"publicHost": "http://localhost:4201",
+						"extraWebpackConfig": "projects/app-produtos/webpack.config.js"
+					}
+				},
+				"extract-i18n": {
+					"builder": "@angular/build:extract-i18n"
+				},
+				"test": {
+					"builder": "@angular/build:karma",
+					"options": {
+						"tsConfig": "projects/app-produtos/tsconfig.spec.json",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/app-produtos/public"
+							}
+						],
+						"styles": [
+							"projects/app-produtos/src/styles.css"
+						]
+					}
+				}
+			}
+		},
+		"app-pedidos": {
+			"projectType": "application",
+			"schematics": {},
+			"root": "projects/app-pedidos",
+			"sourceRoot": "projects/app-pedidos/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "ngx-build-plus:browser",
+					"options": {
+						"tsConfig": "projects/app-pedidos/tsconfig.app.json",
+						"outputPath": "dist/app-pedidos",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/app-pedidos/public",
+								"output": "."
+							}
+						],
+						"styles": [
+							"projects/app-pedidos/src/styles.css"
+						],
+						"main": "projects/app-pedidos/src/main.ts",
+						"index": "projects/app-pedidos/src/index.html",
+						"extraWebpackConfig": "projects/app-pedidos/webpack.config.js",
+						"commonChunk": false
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kB",
+									"maximumError": "1MB"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "4kB",
+									"maximumError": "8kB"
+								}
+							],
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/app-pedidos/webpack.prod.config.js"
+						},
+						"development": {
+							"optimization": false,
+							"extractLicenses": false,
+							"sourceMap": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "ngx-build-plus:dev-server",
+					"configurations": {
+						"production": {
+							"buildTarget": "app-pedidos:build:production",
+							"extraWebpackConfig": "projects/app-pedidos/webpack.prod.config.js"
+						},
+						"development": {
+							"buildTarget": "app-pedidos:build:development"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4202,
+						"publicHost": "http://localhost:4202",
+						"extraWebpackConfig": "projects/app-pedidos/webpack.config.js"
+					}
+				},
+				"extract-i18n": {
+					"builder": "@angular/build:extract-i18n"
+				},
+				"test": {
+					"builder": "@angular/build:karma",
+					"options": {
+						"tsConfig": "projects/app-pedidos/tsconfig.spec.json",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/app-pedidos/public"
+							}
+						],
+						"styles": [
+							"projects/app-pedidos/src/styles.css"
+						]
+					}
+				}
+			}
+		}
+	}
+}
